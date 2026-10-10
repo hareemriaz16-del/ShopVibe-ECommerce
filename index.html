@@ -3,38 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopVibe - E-Commerce Store</title>
+    <title>ShopVibe - Ultimate Online Store</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons for Rating & Cart -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navbar -->
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        🚚 Free Worldwide Shipping on Orders Over $50! | ⚡ Flash Sale Is Live
+    </div>
+
+    <!-- Main Navigation Bar -->
     <header class="navbar">
-        <h1 class="logo">ShopVibe</h1>
-        <div class="search-box">
-            <input type="text" placeholder="Search products...">
-        </div>
-        <div class="cart-btn">
-            Cart (<span id="cart-count">0</span>)
+        <div class="nav-container">
+            <h1 class="logo">Shop<span>Vibe</span></h1>
+            
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search 100+ items (electronics, fashion, beauty...)...">
+            </div>
+
+            <div class="nav-actions">
+                <button class="cart-btn" id="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Banner -->
+    <!-- Hero Banner -->
     <section class="hero">
-        <h2>Welcome to ShopVibe</h2>
-        <p>Discover the best products at unbeatable prices!</p>
+        <div class="hero-content">
+            <h2>Upgrade Your Lifestyle with ShopVibe</h2>
+            <p>Explore hundreds of top-rated products across multiple categories at unbeatable prices.</p>
+        </div>
     </section>
 
-    <!-- Category Filter Buttons -->
-    <section class="categories">
-        <button class="active">All</button>
-        <button>Clothing</button>
-        <button>Shoes</button>
-        <button>Accessories</button>
+    <!-- Categories Section -->
+    <section class="categories-wrapper">
+        <h3>Explore Popular Categories</h3>
+        <div class="categories" id="category-buttons">
+            <button class="cat-btn active" data-category="all">All Products</button>
+            <button class="cat-btn" data-category="beauty">Beauty & Cosmetics</button>
+            <button class="cat-btn" data-category="fragrances">Fragrances</button>
+            <button class="cat-btn" data-category="furniture">Furniture</button>
+            <button class="cat-btn" data-category="groceries">Groceries</button>
+            <button class="cat-btn" data-category="laptops">Laptops</button>
+            <button class="cat-btn" data-category="shirts">Shirts & Tops</button>
+            <button class="cat-btn" data-category="shoes">Shoes</button>
+            <button class="cat-btn" data-category="watches">Watches</button>
+        </div>
     </section>
 
-    <!-- Product Grid Placeholder -->
-    <main class="products-container" id="product-grid">
-        <!-- Products will be dynamically loaded here in Module 2 -->
+    <!-- Main Product Grid & Stats -->
+    <main class="main-content">
+        <div class="products-header">
+            <h2 id="section-title">All Products</h2>
+            <span id="product-count" class="count-badge">Loading items...</span>
+        </div>
+
+        <div class="products-container" id="product-grid">
+            <!-- Loading Skeleton / Spinner will appear here -->
+        </div>
     </main>
 
     <script src="app.js"></script>
