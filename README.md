@@ -16,6 +16,12 @@ ShopVibe is a modern, responsive e-commerce web platform built using HTML5, CSS3
  Dynamic DOM rendering of product cards using JavaScript (`app.js`).
  Integrated high-quality product images, titles, category badges, prices, and interactive 'Add to Cart' buttons.
 
+### Module 3: Search & Multi-Category Filtering System
+- Integrated **DummyJSON API** to fetch real-world unique product data dynamically.
+- Implemented real-time live search functionality across product titles and categories.
+- Added multi-category filtering buttons (Beauty, Fragrances, Furniture, Groceries, Laptops, Shirts, Shoes, Watches).
+- Dynamic discount percentage calculations and stock badge displays.
+
 ## 🛠️ Tech Stack
  **Frontend:** HTML5, CSS3, JavaScript (DOM Manipulation)
  **Version Control:** Git & GitHub
