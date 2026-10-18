@@ -207,6 +207,7 @@ body {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
+    cursor: pointer;
 }
 
 .product-card:hover {
@@ -225,6 +226,12 @@ body {
     padding: 3px 8px;
     border-radius: 6px;
     z-index: 2;
+}
+
+.inline-badge {
+    position: static;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .img-container {
@@ -318,6 +325,139 @@ body {
 
 .add-to-cart-btn:hover {
     background-color: #2563eb;
+}
+
+/* Details Modal Layout */
+.product-details-card {
+    max-width: 850px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 25px;
+}
+
+.modal-close-corner {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10;
+}
+
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+}
+
+@media(max-width: 768px) {
+    .product-detail-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detail-img-box {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.detail-img-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.detail-section {
+    margin: 15px 0;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.detail-section h4 {
+    font-size: 14px;
+    color: #1f2937;
+    margin-bottom: 5px;
+}
+
+.detail-section p {
+    font-size: 13px;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.large-btn {
+    padding: 14px;
+    font-size: 15px;
+    background: #2563eb;
+    margin-top: 10px;
+}
+
+/* Reviews Styling */
+.reviews-wrapper {
+    margin-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 15px;
+}
+
+.reviews-list {
+    max-height: 150px;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.review-item {
+    background: #f3f4f6;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.review-stars {
+    color: #f59e0b;
+}
+
+.review-form {
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.review-form h5 {
+    margin-bottom: 8px;
+}
+
+.review-form input, .review-form select, .review-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.submit-review-btn {
+    background: #1f2937;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 /* Cart Drawer & Overlay */
@@ -493,7 +633,7 @@ body {
     background: #1d4ed8;
 }
 
-/* Modal Overlay */
+/* Modals & Forms Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -505,6 +645,7 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .modal-overlay.active {
@@ -513,26 +654,133 @@ body {
 
 .modal-card {
     background: white;
-    padding: 30px;
     border-radius: 16px;
-    text-align: center;
-    max-width: 400px;
+    width: 100%;
+    max-width: 480px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.checkout-form-card {
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.card-fields {
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.place-order-btn {
+    width: 100%;
+    padding: 12px;
+    background: #059669;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.place-order-btn:hover {
+    background: #047857;
+}
+
+.success-card {
+    padding: 30px;
+    text-align: center;
 }
 
 .modal-icon {
-    font-size: 50px;
+    font-size: 55px;
     color: #10b981;
     margin-bottom: 15px;
 }
 
-.close-modal-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #1f2937;
+.order-summary-box {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.order-summary-box p {
+    margin-bottom: 5px;
+    color: #4b5563;
+}
+
+.continue-btn {
+    padding: 12px 25px;
+    background: #2563eb;
     color: white;
     border: none;
     border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
 }
 

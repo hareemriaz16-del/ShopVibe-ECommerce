@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopVibe - Ultimate Online Store</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -70,6 +69,65 @@
         </div>
     </main>
 
+    <!-- Product Details Modal (Quick View + Reviews + How to Use) -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card product-details-card">
+            <button class="close-btn modal-close-corner" id="close-detail-btn">&times;</button>
+            <div class="product-detail-layout">
+                <div class="detail-img-box">
+                    <img id="detail-img" src="" alt="Product Image">
+                </div>
+                <div class="detail-content-box">
+                    <span id="detail-category" class="category-tag"></span>
+                    <h2 id="detail-title"></h2>
+                    
+                    <div class="price-row">
+                        <span id="detail-price" class="current-price"></span>
+                        <span id="detail-old-price" class="old-price"></span>
+                        <span id="detail-discount" class="badge-discount inline-badge"></span>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-align-left"></i> Description</h4>
+                        <p id="detail-desc"></p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-info"></i> How to Use</h4>
+                        <p id="detail-usage"></p>
+                    </div>
+
+                    <button class="add-to-cart-btn large-btn" id="modal-add-cart-btn">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Shopping Cart
+                    </button>
+
+                    <!-- Reviews Section -->
+                    <div class="reviews-wrapper">
+                        <h4><i class="fa-solid fa-star"></i> Customer Reviews & Rating</h4>
+                        <div id="reviews-list" class="reviews-list"></div>
+
+                        <!-- Write Review Form -->
+                        <form id="review-form" class="review-form">
+                            <h5>Leave a Review</h5>
+                            <div class="form-row">
+                                <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                                <select id="reviewer-rating" required>
+                                    <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                                    <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                                    <option value="3">⭐⭐⭐ (3/5)</option>
+                                    <option value="2">⭐⭐ (2/5)</option>
+                                    <option value="1">⭐ (1/5)</option>
+                                </select>
+                            </div>
+                            <textarea id="reviewer-comment" rows="2" placeholder="Share your experience with this item..." required></textarea>
+                            <button type="submit" class="submit-review-btn">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Slide-out Shopping Cart Drawer -->
     <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-drawer" id="cart-drawer">
@@ -78,7 +136,7 @@
             <button class="close-btn" id="close-cart-btn">&times;</button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Cart Items Will Render Here -->
+            <!-- Cart Items -->
         </div>
         <div class="cart-footer">
             <div class="cart-summary">
@@ -87,23 +145,85 @@
                 <hr>
                 <div class="summary-row total-row"><span>Total:</span> <span id="cart-total">$0.00</span></div>
             </div>
-            <button class="checkout-btn" id="checkout-btn" disabled>Proceed to Checkout</button>
+            <button class="checkout-btn" id="checkout-btn" disabled>Proceed to Order</button>
         </div>
     </div>
 
-    <!-- Checkout Modal -->
-    <div class="modal-overlay" id="checkout-modal">
-        <div class="modal-card">
+    <!-- Shipping Details Modal -->
+    <div class="modal-overlay" id="shipping-modal">
+        <div class="modal-card checkout-form-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-truck-fast"></i> Shipping & Payment Details</h3>
+                <button class="close-btn" id="close-shipping-btn">&times;</button>
+            </div>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="cust-name" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="cust-phone" placeholder="e.g. +92 300 1234567" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address *</label>
+                    <textarea id="cust-address" rows="3" placeholder="House/Street no, City, Country" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <div class="payment-options">
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="cod" checked>
+                            <span><i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery (COD)</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="card">
+                            <span><i class="fa-solid fa-credit-card"></i> Card Payment</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="card-fields" class="card-fields hidden">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="1234 5678 9101 1121">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="password" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="place-order-btn">Place Order Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Placed Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card success-card">
             <div class="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
-            <h2>Order Placed Successfully!</h2>
-            <p>Thank you for shopping with <strong>ShopVibe</strong>. Your order has been placed and is being processed.</p>
-            <button class="close-modal-btn" id="close-modal-btn">Continue Shopping</button>
+            <h2>Thank You for Your Order!</h2>
+            <p>Your order has been placed successfully and will be shipped soon.</p>
+            <div class="order-summary-box">
+                <p><strong>Order ID:</strong> <span id="out-order-id">#SV-1092</span></p>
+                <p><strong>Name:</strong> <span id="out-name">---</span></p>
+                <p><strong>Phone:</strong> <span id="out-phone">---</span></p>
+                <p><strong>Payment:</strong> <span id="out-payment">---</span></p>
+            </div>
+            <button class="continue-btn" id="continue-shopping-btn">Continue Shopping</button>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 ShopVibe E-Commerce. All Rights Reserved. Built for Internship Submission.</p>
+        <p>&copy; 2026 ShopVibe E-Commerce. All Rights Reserved.</p>
     </footer>
 
     <script src="app.js"></script>
