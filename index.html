@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopVibe - Ultimate Online Store</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome Icons for Rating & Cart -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="nav-actions">
-                <button class="cart-btn" id="cart-btn">
+                <button class="cart-btn" id="open-cart-btn">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Cart</span>
                     <span id="cart-count" class="cart-badge">0</span>
@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <!-- Main Product Grid & Stats -->
+    <!-- Main Product Grid -->
     <main class="main-content">
         <div class="products-header">
             <h2 id="section-title">All Products</h2>
@@ -66,9 +66,45 @@
         </div>
 
         <div class="products-container" id="product-grid">
-            <!-- Loading Skeleton / Spinner will appear here -->
+            <!-- Dynamic Products -->
         </div>
     </main>
+
+    <!-- Slide-out Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> Your Shopping Cart</h3>
+            <button class="close-btn" id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart Items Will Render Here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary">
+                <div class="summary-row"><span>Subtotal:</span> <span id="cart-subtotal">$0.00</span></div>
+                <div class="summary-row"><span>Shipping:</span> <span id="cart-shipping">Free</span></div>
+                <hr>
+                <div class="summary-row total-row"><span>Total:</span> <span id="cart-total">$0.00</span></div>
+            </div>
+            <button class="checkout-btn" id="checkout-btn" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for shopping with <strong>ShopVibe</strong>. Your order has been placed and is being processed.</p>
+            <button class="close-modal-btn" id="close-modal-btn">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 ShopVibe E-Commerce. All Rights Reserved. Built for Internship Submission.</p>
+    </footer>
 
     <script src="app.js"></script>
 </body>
